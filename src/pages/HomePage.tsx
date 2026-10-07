@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
+import glitter from "@/assets/gold-sparkle.png";
 import portrait from "@/assets/megan-smith.jpg";
 import { bio, identity, quickFacts, site } from "@/content/site";
 import { routes } from "@/lib/routes";
@@ -8,11 +9,29 @@ import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
+const glitterDrifts = [
+  { className: "left-[-12%] top-[4%]", delay: "0s", duration: "16s" },
+  { className: "right-[-18%] top-[28%] w-[min(26rem,70vw)]", delay: "-5s", duration: "21s" },
+  { className: "left-[8%] top-[58%]", delay: "-9s", duration: "18s" },
+  { className: "right-[6%] bottom-[2%] w-[min(22rem,64vw)]", delay: "-13s", duration: "24s" },
+] as const;
+
 export function HomePage() {
   usePageTitle("Home");
 
   return (
-    <div>
+    <div className="relative isolate">
+      <div className="ms-glitter" aria-hidden>
+        {glitterDrifts.map((drift) => (
+          <img
+            key={drift.delay}
+            src={glitter}
+            alt=""
+            className={`ms-glitter-drift ${drift.className}`}
+            style={{ animationDelay: drift.delay, animationDuration: drift.duration }}
+          />
+        ))}
+      </div>
       <section className="relative overflow-hidden px-4 pb-12 pt-10 md:pb-16 md:pt-14">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <motion.figure
