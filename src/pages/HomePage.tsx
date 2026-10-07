@@ -9,11 +9,9 @@ import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
-const glitterDrifts = [
-  { delay: "0s", duration: "22s", top: "0px", lane: "0px", rest: "8%", size: "" },
-  { delay: "-11s", duration: "22s", top: "0px", lane: "9vh", rest: "46%", size: "w-[min(22rem,56vw)]" },
-  { delay: "-5s", duration: "26s", top: "46%", lane: "0px", rest: "18%", size: "" },
-  { delay: "-16s", duration: "26s", top: "46%", lane: "11vh", rest: "68%", size: "w-[min(18rem,48vw)]" },
+const glitterRows = [
+  { top: "-8%", duration: "36s", delay: "0s" },
+  { top: "42%", duration: "46s", delay: "-18s" },
 ] as const;
 
 export function HomePage() {
@@ -22,20 +20,15 @@ export function HomePage() {
   return (
     <div className="relative isolate">
       <div className="ms-glitter" aria-hidden>
-        {glitterDrifts.map((drift) => (
-          <img
-            key={drift.delay}
-            src={glitter}
-            alt=""
-            className={`ms-glitter-drift ${drift.size}`}
-            style={{
-              animationDelay: drift.delay,
-              animationDuration: drift.duration,
-              ["--glitter-top" as string]: drift.top,
-              ["--glitter-lane" as string]: drift.lane,
-              ["--glitter-rest" as string]: drift.rest,
-            }}
-          />
+        {glitterRows.map((row) => (
+          <div
+            key={row.top}
+            className="ms-glitter-row"
+            style={{ top: row.top, animationDuration: row.duration, animationDelay: row.delay }}
+          >
+            <img src={glitter} alt="" />
+            <img src={glitter} alt="" />
+          </div>
         ))}
       </div>
       <section className="relative overflow-hidden px-4 pb-12 pt-10 md:pb-16 md:pt-14">

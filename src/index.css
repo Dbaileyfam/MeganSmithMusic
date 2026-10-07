@@ -272,37 +272,29 @@
   pointer-events: none;
 }
 
-.ms-glitter-drift {
+.ms-glitter-row {
   position: absolute;
-  top: var(--glitter-top, 10%);
   left: 0;
-  width: min(42rem, 90vw);
-  animation-name: ms-glitter-drift, ms-glitter-fade;
-  animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1), linear;
-  animation-iteration-count: infinite;
-  will-change: transform, opacity;
+  display: flex;
+  width: max-content;
+  opacity: 0.72;
+  animation: ms-glitter-loop linear infinite;
+  will-change: transform;
 }
 
-@keyframes ms-glitter-drift {
-  0% {
-    transform: translate3d(-50%, calc(42vh + var(--glitter-lane, 0px)), 0) rotate(-3deg) scale(0.98);
-  }
-  50% {
-    transform: translate3d(40vw, calc(16vh + var(--glitter-lane, 0px)), 0) rotate(0deg) scale(1.04);
-  }
-  100% {
-    transform: translate3d(108vw, calc(-8vh + var(--glitter-lane, 0px)), 0) rotate(3deg) scale(1);
-  }
+.ms-glitter-row img {
+  width: 100vw;
+  max-width: none;
+  height: auto;
+  flex: none;
 }
 
-@keyframes ms-glitter-fade {
-  0%,
-  100% {
-    opacity: 0;
+@keyframes ms-glitter-loop {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  22%,
-  78% {
-    opacity: 0.62;
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -318,11 +310,9 @@
 @media (prefers-reduced-motion: reduce) {
   .ms-spark,
   .ms-spark--star,
-  .ms-glitter-drift {
+  .ms-glitter-row {
     animation: none;
     opacity: 0.4;
-    left: var(--glitter-rest, 12%);
-    transform: none;
   }
 
   .ms-btn-primary,
