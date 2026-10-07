@@ -276,7 +276,7 @@
   position: absolute;
   top: var(--glitter-top, 10%);
   left: 0;
-  width: min(28rem, 64vw);
+  width: min(42rem, 90vw);
   animation-name: ms-glitter-drift, ms-glitter-fade;
   animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1), linear;
   animation-iteration-count: infinite;

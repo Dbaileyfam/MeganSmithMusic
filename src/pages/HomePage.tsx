@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-import glitter from "@/assets/gold-sparkle.png";
+import glitter from "@/assets/gold-bokeh.png";
 import portrait from "@/assets/megan-smith.jpg";
 import { bio, identity, quickFacts, site } from "@/content/site";
 import { routes } from "@/lib/routes";
