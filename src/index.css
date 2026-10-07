@@ -264,34 +264,37 @@
   }
 }
 
-  .ms-glitter {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-  }
+.ms-glitter {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
 
-  .ms-glitter-drift {
-    position: absolute;
-    width: min(34rem, 78vw);
-    opacity: 0.85;
-    animation: ms-glitter-drift ease-in-out infinite;
-    will-change: transform, opacity;
-  }
+.ms-glitter-drift {
+  position: absolute;
+  top: var(--glitter-top, 10%);
+  left: 0;
+  width: min(24rem, 58vw);
+  animation: ms-glitter-drift linear infinite;
+  will-change: transform, opacity;
+}
 
 @keyframes ms-glitter-drift {
   0% {
-    transform: translate3d(0, 0, 0) rotate(-8deg) scale(0.92);
-    opacity: 0.25;
+    transform: translate3d(-65%, calc(70vh + var(--glitter-lane, 0px)), 0) rotate(-14deg);
+    opacity: 0;
   }
-  50% {
-    transform: translate3d(6%, -8%, 0) rotate(6deg) scale(1.08);
-    opacity: 0.9;
+  10% {
+    opacity: 0.95;
+  }
+  90% {
+    opacity: 0.8;
   }
   100% {
-    transform: translate3d(0, 0, 0) rotate(-8deg) scale(0.92);
-    opacity: 0.25;
+    transform: translate3d(104vw, calc(2vh + var(--glitter-lane, 0px)), 0) rotate(10deg);
+    opacity: 0;
   }
 }
 
@@ -309,7 +312,9 @@
   .ms-spark--star,
   .ms-glitter-drift {
     animation: none;
-    opacity: 0.35;
+    opacity: 0.4;
+    left: var(--glitter-rest, 12%);
+    transform: none;
   }
 
   .ms-btn-primary,

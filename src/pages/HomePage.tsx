@@ -10,10 +10,10 @@ import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
 const glitterDrifts = [
-  { className: "left-[-12%] top-[4%]", delay: "0s", duration: "16s" },
-  { className: "right-[-18%] top-[28%] w-[min(26rem,70vw)]", delay: "-5s", duration: "21s" },
-  { className: "left-[8%] top-[58%]", delay: "-9s", duration: "18s" },
-  { className: "right-[6%] bottom-[2%] w-[min(22rem,64vw)]", delay: "-13s", duration: "24s" },
+  { delay: "0s", duration: "12s", top: "0px", lane: "0px", rest: "6%", size: "" },
+  { delay: "-6s", duration: "12s", top: "0px", lane: "14vh", rest: "48%", size: "w-[min(20rem,52vw)]" },
+  { delay: "-2s", duration: "15s", top: "54%", lane: "0px", rest: "18%", size: "" },
+  { delay: "-9s", duration: "15s", top: "54%", lane: "16vh", rest: "70%", size: "w-[min(18rem,48vw)]" },
 ] as const;
 
 export function HomePage() {
@@ -27,8 +27,14 @@ export function HomePage() {
             key={drift.delay}
             src={glitter}
             alt=""
-            className={`ms-glitter-drift ${drift.className}`}
-            style={{ animationDelay: drift.delay, animationDuration: drift.duration }}
+            className={`ms-glitter-drift ${drift.size}`}
+            style={{
+              animationDelay: drift.delay,
+              animationDuration: drift.duration,
+              ["--glitter-top" as string]: drift.top,
+              ["--glitter-lane" as string]: drift.lane,
+              ["--glitter-rest" as string]: drift.rest,
+            }}
           />
         ))}
       </div>
