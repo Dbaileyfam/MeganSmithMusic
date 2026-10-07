@@ -1,7 +1,7 @@
+import portrait from "@/assets/megan-smith.jpg";
 import { bio, epkNav, mediaPhotos, mediaVideos, quickFacts, site, streamingLinks } from "@/content/site";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { usePageTitle } from "@/lib/usePageTitle";
-import { Mark } from "@/components/Mark";
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -17,9 +17,15 @@ export function EPKPage() {
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-ms-blush">
             Electronic Press Kit
           </p>
-          <div className="mt-6 flex justify-center">
-            <Mark className="h-28 w-28" />
-          </div>
+          <figure className="mx-auto mt-6 w-28 overflow-hidden rounded-2xl border border-ms-border shadow-[0_12px_28px_rgba(0,0,0,0.45)] sm:w-32">
+            <img
+              src={portrait}
+              alt="Megan Smith"
+              width={767}
+              height={1024}
+              className="aspect-[3/4] w-full object-cover"
+            />
+          </figure>
           <h1 className="ms-display mt-4 text-5xl text-ms-cream sm:text-7xl">{site.artist}</h1>
           <div className="ms-ornament mx-auto mt-8 max-w-xs" aria-hidden />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
