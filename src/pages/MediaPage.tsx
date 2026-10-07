@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Camera, X } from "lucide-react";
-import { mediaPhotos, mediaVideos, streamingLinks } from "@/content/site";
+import { mediaPhotos, mediaVideos, spotifyEmbed, streamingLinks } from "@/content/site";
 import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
@@ -45,6 +45,20 @@ export function MediaPage() {
 
       <section className="ms-page-shell">
         <div className="mx-auto max-w-6xl space-y-14">
+          <div>
+            <h2 className="ms-section-heading">Listen</h2>
+            <iframe
+              className="mt-6 w-full max-w-xl rounded-xl"
+              title={`${spotifyEmbed.title} on Spotify`}
+              src={spotifyEmbed.src}
+              height={352}
+              style={{ border: 0 }}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+
           <div>
             <h2 className="ms-section-heading">Video</h2>
             {streamingLinks.length > 0 ? (

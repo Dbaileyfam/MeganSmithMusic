@@ -108,6 +108,11 @@ export type MediaVideo = {
   embed?: boolean;
 };
 
+export const spotifyEmbed = {
+  title: "Lose Control",
+  src: "https://open.spotify.com/embed/track/4JiGw9TjVHSS81MUe45H3E?utm_source=generator&theme=0",
+} as const;
+
 export const streamingLinks = [
   {
     label: "Spotify",
