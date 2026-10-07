@@ -1,13 +1,13 @@
-import { Facebook, Instagram, Youtube } from "lucide-react";
 import { site } from "@/content/site";
+import { Mark } from "./Mark";
 
-const icons = {
-  instagram: Instagram,
-  youtube: Youtube,
-  facebook: Facebook,
+const labels = {
+  instagram: "Instagram",
+  youtube: "YouTube",
+  facebook: "Facebook",
 } as const;
 
-type SocialKey = keyof typeof icons;
+type SocialKey = keyof typeof labels;
 
 type SocialLinksProps = {
   className?: string;
@@ -15,13 +15,8 @@ type SocialLinksProps = {
 };
 
 const sizeClasses = {
-  sm: "h-9 w-9",
+  sm: "h-8 w-8",
   md: "h-11 w-11",
-};
-
-const iconSizes = {
-  sm: "h-4 w-4",
-  md: "h-5 w-5",
 };
 
 export function SocialLinks({ className = "", size = "md" }: SocialLinksProps) {
@@ -34,8 +29,7 @@ export function SocialLinks({ className = "", size = "md" }: SocialLinksProps) {
   return (
     <ul className={`flex flex-wrap items-center gap-3 ${className}`}>
       {entries.map(([key, href]) => {
-        const Icon = icons[key];
-        const label = key.charAt(0).toUpperCase() + key.slice(1);
+        const label = labels[key];
         return (
           <li key={key}>
             <a
@@ -43,9 +37,9 @@ export function SocialLinks({ className = "", size = "md" }: SocialLinksProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${site.artist} on ${label}`}
-              className={`inline-flex items-center justify-center rounded-full border border-ms-blush/35 bg-ms-surface/80 text-ms-cream transition hover:border-ms-gold/70 hover:text-ms-gold ${sizeClasses[size]}`}
+              className={`inline-flex transition hover:scale-105 ${sizeClasses[size]}`}
             >
-              <Icon className={iconSizes[size]} aria-hidden />
+              <Mark className="h-full w-full" />
             </a>
           </li>
         );
