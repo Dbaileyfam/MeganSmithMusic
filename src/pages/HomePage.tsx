@@ -9,10 +9,7 @@ import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
-const glitterRows = [
-  { top: "-8%", duration: "36s", delay: "0s" },
-  { top: "42%", duration: "46s", delay: "-18s" },
-] as const;
+const glitterTiles = Array.from({ length: 6 }, (_, index) => index);
 
 export function HomePage() {
   usePageTitle("Home");
@@ -20,16 +17,11 @@ export function HomePage() {
   return (
     <div className="relative isolate">
       <div className="ms-glitter" aria-hidden>
-        {glitterRows.map((row) => (
-          <div
-            key={row.top}
-            className="ms-glitter-row"
-            style={{ top: row.top, animationDuration: row.duration, animationDelay: row.delay }}
-          >
-            <img src={glitter} alt="" />
-            <img src={glitter} alt="" />
-          </div>
-        ))}
+        <div className="ms-glitter-sheet">
+          {glitterTiles.map((tile) => (
+            <img key={tile} src={glitter} alt="" />
+          ))}
+        </div>
       </div>
       <section className="relative overflow-hidden px-4 pb-12 pt-10 md:pb-16 md:pt-14">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">

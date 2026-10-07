@@ -272,29 +272,31 @@
   pointer-events: none;
 }
 
-.ms-glitter-row {
+.ms-glitter-sheet {
   position: absolute;
+  top: -18%;
   left: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 100vw);
   width: max-content;
   opacity: 0.72;
-  animation: ms-glitter-loop linear infinite;
+  animation: ms-glitter-loop 34s linear infinite;
   will-change: transform;
 }
 
-.ms-glitter-row img {
+.ms-glitter-sheet img {
   width: 100vw;
   max-width: none;
   height: auto;
-  flex: none;
+  display: block;
 }
 
 @keyframes ms-glitter-loop {
   from {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
   to {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(0, -33.333333%, 0);
   }
 }
 
@@ -310,7 +312,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ms-spark,
   .ms-spark--star,
-  .ms-glitter-row {
+  .ms-glitter-sheet {
     animation: none;
     opacity: 0.4;
   }
