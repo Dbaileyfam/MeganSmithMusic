@@ -1,3 +1,4 @@
+import portrait from "@/assets/megan-smith.jpg";
 import { routes } from "@/lib/routes";
 
 /**
@@ -11,14 +12,15 @@ export const site = {
   description:
     "Soulful live music rooted in R&B, blues, funk, jazz and pop. Megan Smith is a vocalist, performer, and songwriter.",
   social: {
-    instagram: null as string | null,
-    youtube: null as string | null,
+    instagram: "https://www.instagram.com/megan.sarah.smith",
+    youtube: "https://www.youtube.com/@megansmithmusic",
     facebook: null as string | null,
   },
   booking: {
     representative: null as string | null,
     email: null as string | null,
     phone: null as string | null,
+    form: "https://docs.google.com/forms/d/e/1FAIpQLSctiiEBfK0UpmJGfcmOWNDjmwRlwGxoLej83hwadquoiobh0A/viewform",
   },
 } as const;
 
@@ -99,12 +101,50 @@ export type MediaPhoto = {
 };
 
 export type MediaVideo = {
-  src: string;
-  poster?: string;
+  youtubeId: string;
   title: string;
   alt: string;
   portrait?: boolean;
+  embed?: boolean;
 };
 
-export const mediaPhotos: MediaPhoto[] = [];
-export const mediaVideos: MediaVideo[] = [];
+export const streamingLinks = [
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/artist/4XzpneNPPEbFztdGL6Qx87",
+  },
+  {
+    label: "Apple Music",
+    href: "https://music.apple.com/ca/artist/megan-sarah-smith/1736040615",
+  },
+] as const;
+
+export const mediaPhotos: MediaPhoto[] = [
+  {
+    src: portrait,
+    alt: "Portrait of Megan Smith",
+    title: "Portrait",
+  },
+];
+
+export const mediaVideos: MediaVideo[] = [
+  {
+    youtubeId: "UcNejXFEQbg",
+    title: "I Put A Spell On You — Annie Lennox (Cover)",
+    alt: "Megan Smith singing I Put A Spell On You",
+    portrait: true,
+  },
+  {
+    youtubeId: "H813AzmfjZM",
+    title: "Oscar Winning Tears — Raye (Cover)",
+    alt: "Megan Smith singing Oscar Winning Tears",
+    portrait: true,
+  },
+  {
+    youtubeId: "ZBPN82REFTk",
+    title: "Respect — Aretha Franklin",
+    alt: "Megan Smith singing Respect",
+    portrait: true,
+    embed: false,
+  },
+];

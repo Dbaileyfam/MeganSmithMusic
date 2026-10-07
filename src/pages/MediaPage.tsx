@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Camera, X } from "lucide-react";
-import { mediaPhotos, mediaVideos } from "@/content/site";
+import { mediaPhotos, mediaVideos, streamingLinks } from "@/content/site";
 import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { PageHero } from "@/components/PageHero";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 export function MediaPage() {
   usePageTitle("Media");
@@ -39,34 +40,39 @@ export function MediaPage() {
       <PageHero
         eyebrow="Gallery"
         title="Media"
-        description="Video and photos, when they are ready to shine."
+        description="Performance video, streaming, and photos."
       />
 
       <section className="ms-page-shell">
         <div className="mx-auto max-w-6xl space-y-14">
           <div>
             <h2 className="ms-section-heading">Video</h2>
+            {streamingLinks.length > 0 ? (
+              <ul className="mt-6 flex flex-wrap gap-3">
+                {streamingLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ms-btn-ghost"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             {mediaVideos.length > 0 ? (
-              <ul className="mt-8 grid gap-8">
+              <ul className="mt-8 grid items-start gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {mediaVideos.map((video, index) => (
-                  <motion.li key={video.src} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.06 }}>
-                    <figure className="ms-card overflow-hidden">
-                      <div className={video.portrait ? "mx-auto aspect-[9/16] w-full max-w-sm bg-black" : "aspect-video bg-black"}>
-                        <video
-                          className="relative z-10 h-full w-full object-contain"
-                          controls
-                          playsInline
-                          preload="metadata"
-                          poster={video.poster}
-                          aria-label={video.alt}
-                        >
-                          <source src={video.src} type="video/mp4" />
-                        </video>
-                      </div>
-                      <figcaption className="relative z-10 px-5 py-4 font-semibold text-ms-cream">
-                        {video.title}
-                      </figcaption>
-                    </figure>
+                  <motion.li
+                    key={video.youtubeId}
+                    className={video.portrait ? "mx-auto w-full max-w-sm" : "sm:col-span-2 lg:col-span-3"}
+                    {...fadeUp}
+                    transition={{ ...fadeUp.transition, delay: index * 0.06 }}
+                  >
+                    <YouTubeEmbed video={video} />
                   </motion.li>
                 ))}
               </ul>

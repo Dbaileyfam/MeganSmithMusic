@@ -1,4 +1,5 @@
-import { bio, epkNav, quickFacts, site } from "@/content/site";
+import { bio, epkNav, mediaPhotos, mediaVideos, quickFacts, site, streamingLinks } from "@/content/site";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { Mark } from "@/components/Mark";
 
@@ -76,26 +77,62 @@ export function EPKPage() {
       </section>
 
       <section id="music" className="scroll-mt-36 border-y border-ms-border/50 bg-ms-surface/30 px-4 py-14">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-6xl">
           <h2 className="ms-section-heading">Music</h2>
-          <p className="mt-4 text-ms-cream-muted">
-            Streaming links and featured songs will sit in this section.
-          </p>
+          <ul className="mt-6 flex flex-wrap gap-3">
+            {streamingLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} target="_blank" rel="noopener noreferrer" className="ms-btn-ghost">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {mediaVideos.map((video) => (
+              <li key={video.youtubeId} className={video.portrait ? "mx-auto w-full max-w-sm" : "sm:col-span-2 lg:col-span-3"}>
+                <YouTubeEmbed video={video} />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section id="photos" className="scroll-mt-36 px-4 py-14">
         <div className="mx-auto max-w-3xl">
           <h2 className="ms-section-heading">Photos</h2>
-          <p className="mt-4 text-ms-cream-muted">
-            Press photos will be ready to view and download from here.
-          </p>
+          {mediaPhotos.length > 0 ? (
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {mediaPhotos.map((photo) => (
+                <li key={photo.src}>
+                  <figure className="ms-card overflow-hidden">
+                    <img src={photo.src} alt={photo.alt} className="relative z-10 aspect-[3/4] w-full object-cover" />
+                    <figcaption className="relative z-10 px-4 py-3 text-sm font-semibold text-ms-cream">
+                      {photo.title}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-4 text-ms-cream-muted">Press photos will be ready to view and download from here.</p>
+          )}
         </div>
       </section>
 
       <section id="contact" className="scroll-mt-36 border-t border-ms-border/50 px-4 py-14">
         <div className="mx-auto max-w-3xl">
           <h2 className="ms-section-heading">Booking</h2>
+          {site.booking.form ? (
+            <a
+              href={site.booking.form}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ms-btn-primary mt-6"
+            >
+              Booking inquiry
+            </a>
+          ) : null}
           {site.booking.email || site.booking.phone ? (
             <address className="mt-4 not-italic text-ms-cream">
               {site.booking.representative ? <p className="font-semibold">{site.booking.representative}</p> : null}
@@ -108,7 +145,7 @@ export function EPKPage() {
               ) : null}
               {site.booking.phone ? <p className="mt-2">{site.booking.phone}</p> : null}
             </address>
-          ) : (
+          ) : site.booking.form ? null : (
             <p className="mt-4 text-ms-cream-muted">Booking contact coming soon.</p>
           )}
         </div>

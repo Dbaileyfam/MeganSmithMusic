@@ -10,7 +10,7 @@ import { SocialLinks } from "@/components/SocialLinks";
 export function ContactPage() {
   usePageTitle("Contact");
   const { booking } = site;
-  const hasContact = Boolean(booking.email || booking.phone || booking.representative);
+  const hasContact = Boolean(booking.email || booking.phone || booking.representative || booking.form);
 
   return (
     <>
@@ -46,6 +46,16 @@ export function ContactPage() {
                         {booking.phone}
                       </a>
                     </p>
+                  ) : null}
+                  {booking.form ? (
+                    <a
+                      href={booking.form}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ms-btn-primary mt-6"
+                    >
+                      Booking inquiry
+                    </a>
                   ) : null}
                 </address>
               ) : (
