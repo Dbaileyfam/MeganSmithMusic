@@ -276,25 +276,33 @@
   position: absolute;
   top: var(--glitter-top, 10%);
   left: 0;
-  width: min(24rem, 58vw);
-  animation: ms-glitter-drift linear infinite;
+  width: min(28rem, 64vw);
+  animation-name: ms-glitter-drift, ms-glitter-fade;
+  animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1), linear;
+  animation-iteration-count: infinite;
   will-change: transform, opacity;
 }
 
 @keyframes ms-glitter-drift {
   0% {
-    transform: translate3d(-65%, calc(70vh + var(--glitter-lane, 0px)), 0) rotate(-14deg);
-    opacity: 0;
+    transform: translate3d(-50%, calc(42vh + var(--glitter-lane, 0px)), 0) rotate(-3deg) scale(0.98);
   }
-  10% {
-    opacity: 0.95;
-  }
-  90% {
-    opacity: 0.8;
+  50% {
+    transform: translate3d(40vw, calc(16vh + var(--glitter-lane, 0px)), 0) rotate(0deg) scale(1.04);
   }
   100% {
-    transform: translate3d(104vw, calc(2vh + var(--glitter-lane, 0px)), 0) rotate(10deg);
+    transform: translate3d(108vw, calc(-8vh + var(--glitter-lane, 0px)), 0) rotate(3deg) scale(1);
+  }
+}
+
+@keyframes ms-glitter-fade {
+  0%,
+  100% {
     opacity: 0;
+  }
+  22%,
+  78% {
+    opacity: 0.62;
   }
 }
 

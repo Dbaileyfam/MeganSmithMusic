@@ -10,10 +10,10 @@ import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
 
 const glitterDrifts = [
-  { delay: "0s", duration: "12s", top: "0px", lane: "0px", rest: "6%", size: "" },
-  { delay: "-6s", duration: "12s", top: "0px", lane: "14vh", rest: "48%", size: "w-[min(20rem,52vw)]" },
-  { delay: "-2s", duration: "15s", top: "54%", lane: "0px", rest: "18%", size: "" },
-  { delay: "-9s", duration: "15s", top: "54%", lane: "16vh", rest: "70%", size: "w-[min(18rem,48vw)]" },
+  { delay: "0s", duration: "22s", top: "0px", lane: "0px", rest: "8%", size: "" },
+  { delay: "-11s", duration: "22s", top: "0px", lane: "9vh", rest: "46%", size: "w-[min(22rem,56vw)]" },
+  { delay: "-5s", duration: "26s", top: "46%", lane: "0px", rest: "18%", size: "" },
+  { delay: "-16s", duration: "26s", top: "46%", lane: "11vh", rest: "68%", size: "w-[min(18rem,48vw)]" },
 ] as const;
 
 export function HomePage() {
