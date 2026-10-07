@@ -41,8 +41,22 @@ export function HomePage() {
   return (
     <div>
       <section className="relative overflow-hidden px-4 pb-12 pt-10 md:pb-16 md:pt-14">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-          <div>
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <motion.figure
+            className="w-full max-w-[16rem] overflow-hidden rounded-3xl border border-ms-border shadow-[0_18px_40px_rgba(0,0,0,0.55)] sm:max-w-xs"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img
+              src={portrait}
+              alt="Megan Smith"
+              width={767}
+              height={1024}
+              className="aspect-[3/4] w-full object-cover"
+            />
+          </motion.figure>
+          <div className="mt-8">
             <motion.p
               className="text-xs font-bold uppercase tracking-[0.35em] text-ms-blush"
               {...fadeUp}
@@ -65,14 +79,14 @@ export function HomePage() {
               {identity.roles.join(" • ")}
             </motion.p>
             <motion.p
-              className="mt-4 max-w-xl text-sm leading-relaxed text-ms-cream-muted md:text-base"
+              className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ms-cream-muted md:text-base"
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.14 }}
             >
               {bio.short}
             </motion.p>
             <motion.ul
-              className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold tracking-[0.14em] text-ms-blush sm:text-sm"
+              className="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs font-semibold tracking-[0.14em] text-ms-blush sm:text-sm"
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.16 }}
             >
@@ -84,7 +98,7 @@ export function HomePage() {
               ))}
             </motion.ul>
             <motion.div
-              className="mt-7 flex flex-wrap gap-3"
+              className="mt-7 flex flex-wrap justify-center gap-3"
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.18 }}
             >
@@ -97,30 +111,13 @@ export function HomePage() {
               </Link>
             </motion.div>
             <motion.div
-              className="mt-5"
+              className="mt-5 flex justify-center"
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: 0.22 }}
             >
               <SocialLinks />
             </motion.div>
           </div>
-
-          <motion.div
-            className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <figure className="w-full max-w-sm overflow-hidden rounded-3xl border border-ms-border shadow-[0_18px_40px_rgba(0,0,0,0.55)] lg:max-w-md">
-              <img
-                src={portrait}
-                alt="Megan Smith"
-                width={767}
-                height={1024}
-                className="aspect-[3/4] w-full object-cover"
-              />
-            </figure>
-          </motion.div>
         </div>
       </section>
 
