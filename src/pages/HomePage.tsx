@@ -1,39 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Camera, Mail, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import portrait from "@/assets/megan-smith.jpg";
 import { bio, identity, quickFacts, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
-
-const tiles = [
-  {
-    to: routes.shows,
-    title: "Shows",
-    body: "Upcoming dates and where to catch Megan live.",
-    icon: Calendar,
-  },
-  {
-    to: routes.media,
-    title: "Media",
-    body: "Performance video and photos.",
-    icon: Camera,
-  },
-  {
-    to: routes.contact,
-    title: "Contact",
-    body: "Book a show, a private event, or a press request.",
-    icon: Mail,
-  },
-  {
-    to: routes.epk,
-    title: "EPK",
-    body: "Bio, photos, and booking notes for promoters.",
-    icon: Sparkles,
-  },
-] as const;
 
 export function HomePage() {
   usePageTitle("Home");
@@ -161,44 +134,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 pb-14 pt-12 md:pb-20 md:pt-14">
-        <div className="mx-auto max-w-6xl">
-          <motion.h2 className="ms-section-heading text-center" {...fadeUp}>
-            Explore
-          </motion.h2>
-          <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-ms-cream-muted">
-            Shows, media, contact, and the press kit.
-          </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {tiles.map((tile, index) => (
-              <motion.div
-                key={tile.to}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: index * 0.06, duration: 0.45 }}
-              >
-                <Link
-                  to={tile.to}
-                  className="group ms-card block h-full p-5 transition hover:-translate-y-1 hover:border-ms-gold/50"
-                >
-                  <span className="relative z-10 block">
-                    <tile.icon className="h-6 w-6 text-ms-pink" aria-hidden />
-                    <h3 className="ms-display mt-3 text-3xl text-ms-cream group-hover:text-ms-gold">
-                      {tile.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ms-cream-muted">{tile.body}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-ms-blush">
-                      Explore
-                      <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" aria-hidden />
-                    </span>
-                  </span>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
