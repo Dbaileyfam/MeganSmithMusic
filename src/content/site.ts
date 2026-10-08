@@ -1,4 +1,13 @@
 import portrait from "@/assets/megan-smith.jpg";
+import liveOnStage from "@/assets/live-on-stage.jpg";
+import liveAtTheMic from "@/assets/live-at-the-mic.jpg";
+import liveInMotion from "@/assets/live-in-motion.jpg";
+import liveFullVoice from "@/assets/live-full-voice.jpg";
+import liveOpenHand from "@/assets/live-open-hand.jpg";
+import liveArmsWide from "@/assets/live-arms-wide.jpg";
+import liveHighNote from "@/assets/live-high-note.jpg";
+import liveInThePocket from "@/assets/live-in-the-pocket.jpg";
+import liveReach from "@/assets/live-reach.jpg";
 import { routes } from "@/lib/routes";
 
 /**
@@ -209,6 +218,51 @@ export const mediaPhotos: MediaPhoto[] = [
     src: portrait,
     alt: "Portrait of Megan Smith",
     title: "Portrait",
+  },
+  {
+    src: liveOnStage,
+    alt: "Megan Smith singing on stage in leopard pants, one hand on the microphone",
+    title: "On stage",
+  },
+  {
+    src: liveAtTheMic,
+    alt: "Megan Smith leaning into the microphone on stage",
+    title: "At the mic",
+  },
+  {
+    src: liveInMotion,
+    alt: "Megan Smith singing with her hair in motion",
+    title: "In motion",
+  },
+  {
+    src: liveFullVoice,
+    alt: "Megan Smith singing with full voice into the microphone",
+    title: "Full voice",
+  },
+  {
+    src: liveOpenHand,
+    alt: "Megan Smith singing with one arm extended",
+    title: "Open hand",
+  },
+  {
+    src: liveArmsWide,
+    alt: "Megan Smith singing in a floral dress with both arms raised",
+    title: "Arms wide",
+  },
+  {
+    src: liveHighNote,
+    alt: "Megan Smith singing a high note in a floral dress",
+    title: "The high note",
+  },
+  {
+    src: liveInThePocket,
+    alt: "Megan Smith singing and gesturing on stage in a floral dress",
+    title: "In the pocket",
+  },
+  {
+    src: liveReach,
+    alt: "Megan Smith singing with one arm stretched out",
+    title: "Reach",
   },
 ];
 

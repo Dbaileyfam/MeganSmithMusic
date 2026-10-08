@@ -105,14 +105,14 @@ export function EPKPage() {
       </section>
 
       <section id="photos" className="scroll-mt-36 px-4 py-14">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-6xl">
           <h2 className="ms-section-heading">Photos</h2>
           {mediaPhotos.length > 0 ? (
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {mediaPhotos.map((photo) => (
                 <li key={photo.src}>
                   <figure className="ms-card overflow-hidden">
-                    <img src={photo.src} alt={photo.alt} className="relative z-10 aspect-[3/4] w-full object-cover" />
+                    <img src={photo.src} alt={photo.alt} className="relative z-10 aspect-[3/4] w-full object-cover object-top" />
                     <figcaption className="relative z-10 px-4 py-3 text-sm font-semibold text-ms-cream">
                       {photo.title}
                     </figcaption>
