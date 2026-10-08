@@ -113,9 +113,6 @@ export function EPKPage() {
                 <li key={photo.src}>
                   <figure className="ms-card overflow-hidden">
                     <img src={photo.src} alt={photo.alt} className="relative z-10 aspect-[3/4] w-full object-cover object-top" />
-                    <figcaption className="relative z-10 px-4 py-3 text-sm font-semibold text-ms-cream">
-                      {photo.title}
-                    </figcaption>
                   </figure>
                 </li>
               ))}

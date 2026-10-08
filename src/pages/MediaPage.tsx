@@ -109,12 +109,10 @@ export function MediaPage() {
                     <button
                       type="button"
                       className="ms-card block w-full overflow-hidden text-left"
+                      aria-label={photo.alt}
                       onClick={() => setActiveIndex(index)}
                     >
                       <img src={photo.src} alt={photo.alt} className="relative z-10 aspect-[4/5] w-full object-cover object-top" />
-                      <span className="relative z-10 block px-4 py-3 text-sm font-semibold text-ms-cream">
-                        {photo.title}
-                      </span>
                     </button>
                   </li>
                 ))}
