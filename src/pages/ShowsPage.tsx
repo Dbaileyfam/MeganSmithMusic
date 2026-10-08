@@ -17,7 +17,7 @@ export function ShowsPage() {
       <PageHero
         eyebrow="Live"
         title="Shows"
-        description="Dates land here as they are booked."
+        description="Upcoming dates and where to hear Megan live."
       />
 
       <section className="ms-page-shell">

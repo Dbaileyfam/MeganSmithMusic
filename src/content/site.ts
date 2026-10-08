@@ -76,13 +76,93 @@ export type Show = {
   dateLabel: string;
   venue: string;
   location: string;
+  time?: string;
+  event?: string;
+  address?: string;
   ticketUrl?: string;
 };
 
-export const shows: Show[] = [];
+export const shows: Show[] = [
+  {
+    date: "2026-10-08",
+    dateLabel: "Oct 8",
+    venue: "Mint Tapas & Sushi",
+    location: "Sugar House, Salt Lake City",
+    time: "6–8pm",
+    address: "2121 S McClelland St, Salt Lake City, UT 84106",
+  },
+  {
+    date: "2026-10-10",
+    dateLabel: "Oct 10",
+    event: "Grand Opening",
+    venue: "Rockwell Ice Cream",
+    location: "Daybreak, South Jordan",
+    time: "10–11pm",
+    address: "5446 Center Field Dr, South Jordan, UT 84009",
+  },
+  {
+    date: "2026-10-11",
+    dateLabel: "Oct 11",
+    venue: "Piper Down Pub",
+    location: "Salt Lake City",
+    time: "7pm",
+    address: "1492 S State St, Salt Lake City, UT 84115",
+  },
+  {
+    date: "2026-10-14",
+    dateLabel: "Oct 14",
+    venue: "Athena VII",
+    location: "Sandy",
+    time: "6pm",
+    address: "111 W 9000 S, Sandy, UT 84070",
+  },
+  {
+    date: "2026-10-22",
+    dateLabel: "Oct 22",
+    venue: "Mint Tapas & Sushi",
+    location: "Sugar House, Salt Lake City",
+    time: "6–8pm",
+    address: "2121 S McClelland St, Salt Lake City, UT 84106",
+  },
+  {
+    date: "2026-10-28",
+    dateLabel: "Oct 28",
+    venue: "Athena VII",
+    location: "Sandy",
+    time: "6pm",
+    address: "111 W 9000 S, Sandy, UT 84070",
+  },
+  {
+    date: "2026-12-11",
+    dateLabel: "Dec 11",
+    event: "Pink Floyd Tribute",
+    venue: "The Pearl on Main",
+    location: "Midvale",
+    time: "Time TBA",
+    address: "7711 S Main St, Midvale, UT 84047",
+  },
+];
+
+export function showMapQuery(show: Show) {
+  return encodeURIComponent(show.address || `${show.venue}, ${show.location}`);
+}
+
+export function showMapEmbedSrc(show: Show) {
+  return `https://maps.google.com/maps?hl=en&q=${showMapQuery(show)}&z=15&output=embed`;
+}
+
+export function showDirectionsHref(show: Show) {
+  return `https://www.google.com/maps/dir/?api=1&destination=${showMapQuery(show)}`;
+}
+
+function localTodayIso(now = new Date()) {
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}-${month}-${day}`;
+}
 
 export function partitionShows(now = new Date()) {
-  const today = now.toISOString().slice(0, 10);
+  const today = localTodayIso(now);
   const upcoming = shows
     .filter((show) => show.date >= today)
     .slice()
