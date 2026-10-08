@@ -33,7 +33,6 @@ export function YouTubeEmbed({ video }: YouTubeEmbedProps) {
             </span>
           </span>
         </a>
-        <figcaption className="relative z-10 px-5 py-4 font-semibold text-ms-cream">{video.title}</figcaption>
       </figure>
     );
   }
@@ -51,7 +50,6 @@ export function YouTubeEmbed({ video }: YouTubeEmbedProps) {
           allowFullScreen
         />
       </div>
-      <figcaption className="relative z-10 px-5 py-4 font-semibold text-ms-cream">{video.title}</figcaption>
     </figure>
   );
 }
