@@ -142,6 +142,14 @@ export const shows: Show[] = [
     address: "111 W 9000 S, Sandy, UT 84070",
   },
   {
+    date: "2026-11-06",
+    dateLabel: "Nov 6",
+    event: "Salt Lake City MiniFest",
+    venue: "The Pearl on Main",
+    location: "Midvale",
+    address: "7711 S Main St, Midvale, UT 84047",
+  },
+  {
     date: "2026-12-11",
     dateLabel: "Dec 11",
     event: "Pink Floyd Tribute",
