@@ -8,6 +8,7 @@ import liveArmsWide from "@/assets/live-arms-wide.jpg";
 import liveHighNote from "@/assets/live-high-note.jpg";
 import liveInThePocket from "@/assets/live-in-the-pocket.jpg";
 import liveReach from "@/assets/live-reach.jpg";
+import miniFestPoster from "@/assets/salt-lake-city-minifest.jpg";
 import { routes } from "@/lib/routes";
 
 /**
@@ -89,6 +90,7 @@ export type Show = {
   event?: string;
   address?: string;
   ticketUrl?: string;
+  poster?: string;
 };
 
 export const shows: Show[] = [
@@ -148,6 +150,7 @@ export const shows: Show[] = [
     venue: "The Pearl on Main",
     location: "Midvale",
     address: "7711 S Main St, Midvale, UT 84047",
+    poster: miniFestPoster,
   },
   {
     date: "2026-12-11",

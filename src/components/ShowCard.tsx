@@ -4,13 +4,14 @@ type ShowCardProps = {
   show: Show;
   heading?: "h2" | "h3";
   past?: boolean;
+  maps?: boolean;
 };
 
-export function ShowCard({ show, heading = "h3", past = false }: ShowCardProps) {
+export function ShowCard({ show, heading = "h3", past = false, maps = true }: ShowCardProps) {
   const Heading = heading;
   const [month, day] = show.dateLabel.split(" ");
-
-  const place = [show.location, show.time].filter(Boolean).join(" · ");
+  const title = show.event || show.venue;
+  const place = [show.event ? show.venue : null, show.location, show.time].filter(Boolean).join(" · ");
 
   return (
     <li className={`ms-card flex flex-col gap-5 p-5 sm:flex-row sm:items-start ${past ? "opacity-80" : ""}`}>
@@ -22,10 +23,7 @@ export function ShowCard({ show, heading = "h3", past = false }: ShowCardProps) 
         <span className="ms-display text-2xl leading-none">{day?.replace(",", "")}</span>
       </time>
       <div className="relative z-10 min-w-0 flex-1">
-        {show.event ? (
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-ms-blush">{show.event}</p>
-        ) : null}
-        <Heading className="text-lg font-semibold text-ms-cream">{show.venue}</Heading>
+        <Heading className="text-lg font-semibold text-ms-cream">{title}</Heading>
         <p className="text-sm text-ms-cream-muted">{place}</p>
         {show.address ? (
           <p className="mt-2 text-sm text-ms-cream">{show.address}</p>
@@ -55,7 +53,14 @@ export function ShowCard({ show, heading = "h3", past = false }: ShowCardProps) 
           </p>
         ) : null}
       </div>
-      {show.address ? (
+      {show.poster ? (
+        <img
+          src={show.poster}
+          alt={`${title} flyer`}
+          className="relative z-10 w-full max-w-56 rounded-2xl border border-ms-border sm:w-56 sm:shrink-0"
+        />
+      ) : null}
+      {maps && show.address && !show.poster ? (
         <div className="relative z-10 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-ms-border sm:w-80 sm:shrink-0">
           <iframe
             title={`Map to ${show.venue}`}
@@ -74,10 +79,12 @@ export function ShowGrid({
   items,
   heading,
   past = false,
+  maps = true,
 }: {
   items: Show[];
   heading?: "h2" | "h3";
   past?: boolean;
+  maps?: boolean;
 }) {
   return (
     <ul className="grid gap-4">
@@ -87,6 +94,7 @@ export function ShowGrid({
           show={show}
           heading={heading}
           past={past}
+          maps={maps}
         />
       ))}
     </ul>

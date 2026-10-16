@@ -3,16 +3,18 @@ import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import glitter from "@/assets/gold-bokeh.png";
 import portrait from "@/assets/megan-smith.jpg";
-import { bio, identity, quickFacts, site } from "@/content/site";
+import { bio, identity, partitionShows, quickFacts, site } from "@/content/site";
 import { routes } from "@/lib/routes";
 import { fadeUp } from "@/lib/motion";
 import { usePageTitle } from "@/lib/usePageTitle";
 import { SocialLinks } from "@/components/SocialLinks";
+import { ShowGrid } from "@/components/ShowCard";
 
 const glitterTiles = Array.from({ length: 6 }, (_, index) => index);
 
 export function HomePage() {
   usePageTitle("Home");
+  const { upcoming } = partitionShows();
 
   return (
     <div className="relative isolate">
@@ -103,6 +105,17 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {upcoming.length > 0 ? (
+        <section className="scroll-mt-24 border-y border-ms-border/60 bg-ms-surface/35 px-4 py-12 md:py-14">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="ms-section-heading">Upcoming shows</h2>
+            <div className="mt-8">
+              <ShowGrid items={upcoming} maps={false} />
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section
         id="about"
