@@ -157,6 +157,7 @@ export const shows: Show[] = [
     dateLabel: "Nov 12",
     venue: "Mint Tapas & Sushi",
     location: "Holladay",
+    time: "6–9pm",
     address: "4640 S Holladay Village Plaza, Holladay, UT 84117",
   },
   {
@@ -165,7 +166,7 @@ export const shows: Show[] = [
     event: "Pink Floyd Tribute",
     venue: "The Pearl on Main",
     location: "Midvale",
-    time: "Time TBA",
+    time: "7pm",
     address: "7711 S Main St, Midvale, UT 84047",
   },
 ];
