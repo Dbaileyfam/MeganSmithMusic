@@ -153,6 +153,13 @@ export const shows: Show[] = [
     poster: miniFestPoster,
   },
   {
+    date: "2026-11-12",
+    dateLabel: "Nov 12",
+    venue: "Mint Tapas & Sushi",
+    location: "Holladay",
+    address: "4640 S Holladay Village Plaza, Holladay, UT 84117",
+  },
+  {
     date: "2026-12-11",
     dateLabel: "Dec 11",
     event: "Pink Floyd Tribute",
@@ -279,22 +286,21 @@ export const mediaPhotos: MediaPhoto[] = [
 
 export const mediaVideos: MediaVideo[] = [
   {
-    youtubeId: "UcNejXFEQbg",
-    title: "I Put A Spell On You — Annie Lennox (Cover)",
-    alt: "Megan Smith singing I Put A Spell On You",
-    portrait: true,
-  },
-  {
-    youtubeId: "H813AzmfjZM",
-    title: "Oscar Winning Tears — Raye (Cover)",
-    alt: "Megan Smith singing Oscar Winning Tears",
-    portrait: true,
-  },
-  {
-    youtubeId: "ZBPN82REFTk",
+    youtubeId: "RVNIpwAiix8",
     title: "Respect — Aretha Franklin",
     alt: "Megan Smith singing Respect",
     portrait: true,
-    embed: false,
+  },
+  {
+    youtubeId: "1_JBUQVti-8",
+    title: "So Easy (To Fall in Love) — Olivia Dean",
+    alt: "Megan Smith singing So Easy (To Fall in Love)",
+    portrait: true,
+  },
+  {
+    youtubeId: "e2po9SO7QgM",
+    title: "At Last — Etta James",
+    alt: "Megan Smith singing At Last",
+    portrait: true,
   },
 ];
