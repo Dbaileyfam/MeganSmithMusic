@@ -304,4 +304,10 @@ export const mediaVideos: MediaVideo[] = [
     alt: "Megan Smith singing At Last",
     portrait: true,
   },
+  {
+    youtubeId: "2FW61SKHV2k",
+    title: "The Game",
+    alt: "Megan Smith performing The Game, an original soul and groove song",
+    portrait: true,
+  },
 ];
